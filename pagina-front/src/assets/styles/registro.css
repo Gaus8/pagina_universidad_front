@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --verde: #25771e;
+
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+body,
+.body {
+  width: 100%;
+  height: 100vh;
+
+  font-weight: 400;
+  position: relative;
+  overflow: hidden;
+}
+
+.body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/img/fondo_universidad.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+/*
+Estilos del contenedor principal, <main />
+*/
+.contenedor {
+  border: none;
+  margin: 200px auto;
+  width: 950px;
+  height: 65vh;
+  display: flex;
+  justify-content: space-between;
+  box-shadow:
+    1px 1px 10px rgb(114, 114, 114),
+    -1px -1px 10px rgb(114, 114, 114);
+  background-color: #FFF;
+  border-radius: 20px;
+}
+
+/*
+Estilos del contenedor del form
+*/
+.contenedor-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: var(--verde);
+}
+
+form {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 8px;
+}
+
+.contenedor-form-inputs {
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  gap: 8px;
+  background-color: #EEEEEE;
+  border-radius: 50px;
+}
+
+.contenedor-form-inputs input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: inherit;
+
+}
+
+.logos {
+  color: rgb(104, 105, 105);
+  padding: 2px;
+}
+
+/*Boton de registro*/
+#boton-registro,
+#boton-login {
+  margin-top: 20px;
+  width: 80%;
+  color: var(--verde);
+  font-size: 0.9rem;
+  padding: 20px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  transition: 0.5s ease-in-out;
+
+}
+
+#boton-registro:hover,
+#boton-login:hover {
+  background-color: var(--verde);
+  color: #FFF;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#boton-registro:active,
+#boton-login:active {
+  box-shadow: 3px 3px 3px #25771e8e;
+}
+
+/*
+Estilos del contenedor de imagenes y texto
+*/
+.contenedor-texto {
+  background-image: linear-gradient(45deg, #25771e, #239727);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: none;
+  border-radius: 20px 0px 300px 20px;
+  position: relative;
+}
+
+.contenedor-texto img {
+  margin: 20px;
+  width: 10%;
+  color: white;
+}
+
+h1 {
+  margin: 20px;
+  font-size: 2rem;
+  text-align: center;
+  color: #FFF;
+}
+
+/*Boton de cambio de ventana, cambio a ventana Login*/
+.btn-cambio-ventana {
+  margin-top: 20px;
+  width: 60%;
+  color: #FFF;
+  font-size: 0.9rem;
+  padding: 20px;
+  text-decoration: none;
+  border: 1px solid wheat;
+  text-align: center;
+  background-color: transparent;
+  transition: 0.5s ease-in-out;
+
+}
+
+.btn-cambio-ventana:hover {
+  background: linear-gradient(120deg, transparent 0%, rgba(180, 175, 175, 0.493) 50%, transparent 100%);
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#boton-registro:active {
+  box-shadow: 3px 3px 3px #25771e8e;
+}
+
+
+/*
+Responsividad
+*/
+@media screen and (max-width: 1080px) {
+  .contenedor {
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+    margin: 100px auto;
+  }
+
+  .contenedor-form {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .contenedor-texto {
+    height: auto;
+    border-radius: 20px 20px 0px 0px;
+    padding: 20px 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .contenedor-form-inputs {
+    width: 80%;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .contenedor-texto img {
+    width: 15%;
+  }
+}
