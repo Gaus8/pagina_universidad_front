@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 import { FaLock, FaUser } from "react-icons/fa";
+import '../assets/styles/registro.css'
 import { MdEmail } from "react-icons/md";
 
-function Registro (){
+function Registro() {
 
-   const url = 'http://localhost:3000/api'
+  const url = 'http://localhost:3000/api'
   const [data, setData] = useState({
     name: '',
     email: '',
@@ -32,9 +34,9 @@ function Registro (){
     }
     catch (err) {
 
-      const errores = err.response.data.error; 
+      const errores = err.response.data.error;
       console.log(errores);
-      
+
       document.getElementById('error-name').textContent = '';
       document.getElementById('error-email').textContent = '';
       document.getElementById('error-password').textContent = '';
@@ -44,57 +46,74 @@ function Registro (){
         if (e.path.includes('email')) document.getElementById('error-email').textContent = e.message;
         if (e.path.includes('password')) document.getElementById('error-password').textContent = e.message;
       });
-      
+
     }
 
   }
   return (
     <>
-      <main className='contenedor'>
+      <div className='body'>
 
-        <div className='contenedor-form'>
+        <main className='contenedor'>
 
-          <form action="">
+          <section className='contenedor-texto'>
+            <img src="/img/escudo_color.png" alt="Logo Universidad" />
+            <h1>Proyectos de Gestion del Conocimiento</h1>
+            
+              <Link to={'/login'} className='btn-cambio-ventana'> Iniciar Sesión</Link>
+               
+              
+          </section>
 
-            <div className='contenedor-inputs'>
-              <FaUser className='logos' />
-              <input
-                type="text"
-                name="name"
-                onChange={handleChange}
-                placeholder='Nombre Usuario'
-              />
-              <p id='error-name' className='errores'></p>
-            </div>
 
-            <div className='contenedor-inputs'>
-              <FaLock className='logos' />
-              <input
-                type="text"
-                name="email"
-                onChange={handleChange}
-                placeholder='Email Institucional'
-              />
-              <p id='error-email' className='errores'></p>
-            </div>
+          <section className='contenedor-form'>
+            <h2>Registro</h2>
+            <form action="">
 
-            <div className='contenedor-inputs'>
-              <MdEmail className='logos' />
-              <input
-                type="password"
-                name="password"
-                onChange={handleChange}
-                placeholder='Contraseña' />
-              <p id='error-password' className='errores'></p>
-            </div>
+              <div className='contenedor-form-inputs'>
+                <FaUser className='logos' />
+                <input
+                  type="text"
+                  name="name"
+                  onChange={handleChange}
+                  placeholder='Nombre Usuario'
+                />
+                <p id='error-name' className='errores'></p>
+              </div>
 
-            <button type='submit' onClick={enviarDatos}>
-              REGISTRARSE
-            </button>
+              <div className='contenedor-form-inputs'>
+                <MdEmail className='logos' />
+                <input
+                  type="text"
+                  name="email"
+                  onChange={handleChange}
+                  placeholder='Correo Institucional'
+                />
+                <p id='error-email' className='errores'></p>
+              </div>
 
-          </form>
-        </div>
-      </main>
+              <div className='contenedor-form-inputs'>
+                <FaLock className='logos' />
+                <input
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                  placeholder='Contraseña' />
+                <p id='error-password' className='errores'></p>
+              </div>
+
+              <button id="boton-registro" type='submit' onClick={enviarDatos}>
+                REGISTRARSE
+              </button>
+
+            </form>
+          </section>
+
+
+
+        </main>
+
+      </div>
 
     </>
   )
