@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { FaLock, FaUser } from "react-icons/fa";
+import { FaLock} from "react-icons/fa";
 import {Link} from 'react-router-dom'
 import { MdEmail } from "react-icons/md";
 import '../assets/styles/registro.css';
@@ -8,7 +8,7 @@ function Login() {
 
   const url = 'http://localhost:3000/api'
   const [data, setData] = useState({
-    name: '',
+    email: '',
     password: ''
   })
 
@@ -18,15 +18,15 @@ function Login() {
   }
 
   const enviarDatos = async (e) => {
-    const { name, password } = data;
+    const { email, password } = data;
     e.preventDefault();
-    if (!name || !password) {
+    if (!email || !password) {
       return window.alert("Todos los campos deben ser llenados")
     }
     try {
       const response = await axios.post(`${url}/login`, data)
-      if (response.status === 201) {
-        console.log("exito en el registro")
+      if (response.status === 200) {
+       window.alert("EXITO AJAJ")
       }
 
     }
@@ -35,7 +35,7 @@ function Login() {
       const errores = err.response.data.error;
       console.log(errores);
 
-      document.getElementById('error-name').textContent = '';
+      document.getElementById('error-email').textContent = '';
       document.getElementById('error-password').textContent = '';
 
       errores.forEach(e => {
@@ -54,27 +54,25 @@ function Login() {
           <section className='contenedor-texto'>
             <img src="/img/escudo_color.png" alt="Logo Universidad" />
             <h1>Proyectos de Gestion del Conocimiento</h1>
-            <Link to={'/'} className='btn-cambio-ventana'>Registrarse</Link>
-        
+            <Link to={'/'} className='btn-cambio-ventana'>Registrarse</Link> 
           </section>
 
           <section className='contenedor-form'>
            <h2>Inicio de Sesión</h2>
             <form action="">
-
               <div className='contenedor-form-inputs'>
-                <FaUser className='logos' />
+                <MdEmail className='logos' />
                 <input
-                  type="text"
-                  name="name"
+                  type="email"
+                  name="email"
                   onChange={handleChange}
-                  placeholder='Nombre Usuario'
+                  placeholder='Correo Institucional'
                 />
-                <p id='error-name' className='errores'></p>
+                <p id='error-email' className='errores'></p>
               </div>
 
               <div className='contenedor-form-inputs'>
-                <MdEmail className='logos' />
+                <FaLock className='logos' />
                 <input
                   type="password"
                   name="password"

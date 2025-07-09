@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaLock, FaUser } from "react-icons/fa";
 import '../assets/styles/registro.css'
 import { MdEmail } from "react-icons/md";
@@ -28,25 +28,33 @@ function Registro() {
     try {
       const response = await axios.post(`${url}/registro`, data)
       if (response.status === 201) {
-        console.log("exito en el registro")
+        localStorage.setItem('userEmail', data.email);
+        window.location.href = "/validacion";
       }
-
     }
     catch (err) {
 
       const errores = err.response.data.error;
       console.log(errores);
+      const errorName = document.getElementById('error-name');
+      const errorEmail = document.getElementById('error-email');
+      const errorPassword = document.getElementById('error-password');
 
-      document.getElementById('error-name').textContent = '';
-      document.getElementById('error-email').textContent = '';
-      document.getElementById('error-password').textContent = '';
+      errorName.style.display = 'block';
+      errorEmail.style.display = 'block';
+      errorPassword.style.display = 'block';
+
+      errorName.textContent = '';
+      errorEmail.textContent = '';
+      errorPassword.textContent = '';
+   
 
       errores.forEach(e => {
         if (e.path.includes('name')) document.getElementById('error-name').textContent = e.message;
         if (e.path.includes('email')) document.getElementById('error-email').textContent = e.message;
         if (e.path.includes('password')) document.getElementById('error-password').textContent = e.message;
       });
-
+   
     }
 
   }
@@ -59,12 +67,8 @@ function Registro() {
           <section className='contenedor-texto'>
             <img src="/img/escudo_color.png" alt="Logo Universidad" />
             <h1>Proyectos de Gestion del Conocimiento</h1>
-            
-              <Link to={'/login'} className='btn-cambio-ventana'> Iniciar Sesión</Link>
-               
-              
+            <Link to={'/login'} className='btn-cambio-ventana'> Iniciar Sesión</Link>
           </section>
-
 
           <section className='contenedor-form'>
             <h2>Registro</h2>
@@ -78,9 +82,8 @@ function Registro() {
                   onChange={handleChange}
                   placeholder='Nombre Usuario'
                 />
-                <p id='error-name' className='errores'></p>
               </div>
-
+              <p id='error-name' className='errores'></p>
               <div className='contenedor-form-inputs'>
                 <MdEmail className='logos' />
                 <input
@@ -89,8 +92,9 @@ function Registro() {
                   onChange={handleChange}
                   placeholder='Correo Institucional'
                 />
-                <p id='error-email' className='errores'></p>
+
               </div>
+              <p id='error-email' className='errores'></p>
 
               <div className='contenedor-form-inputs'>
                 <FaLock className='logos' />
@@ -99,8 +103,8 @@ function Registro() {
                   name="password"
                   onChange={handleChange}
                   placeholder='Contraseña' />
-                <p id='error-password' className='errores'></p>
               </div>
+              <p id='error-password' className='errores'></p>
 
               <button id="boton-registro" type='submit' onClick={enviarDatos}>
                 REGISTRARSE

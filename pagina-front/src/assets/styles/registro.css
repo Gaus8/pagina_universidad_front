@@ -191,6 +191,15 @@ h1 {
 }
 
 
+/*ERRORES*/
+.errores{
+  color: rgba(187, 18, 18, 0.959);
+  text-align: start;
+  margin: 20px;
+  display: none;
+}
+
+
 /*
 Responsividad
 */
