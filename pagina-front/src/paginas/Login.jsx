@@ -27,6 +27,7 @@ function Login() {
       const response = await axios.post(`${url}/login`, data)
       if (response.status === 200) {
        window.alert("EXITO AJAJ")
+       localStorage.setItem('userEmail', '')
       }
 
     }

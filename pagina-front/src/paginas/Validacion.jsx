@@ -42,7 +42,7 @@ function Validacion() {
       <form className="form-container-validacion" onSubmit={(e) => e.preventDefault()}>
         <img 
           className="logo-empresa-validacion"
-          src="/img/flecha.png"
+          src="/img/escudo_color.png"
           alt="logo_aplicacion" 
         />
         <h3>Verificación de Cuenta</h3>
@@ -50,14 +50,14 @@ function Validacion() {
         {mensaje && (
           <p className="mensaje-ok">
             <strong>¡Ya casi terminamos!</strong><br />
-            Hemos enviado un correo a <strong>{email}</strong>.<br />
+            Hemos enviado un correo a <span>{email}</span>.<br />
             Por favor, sigue las instrucciones que encontrarás allí.
           </p>
         )}
 
         {error && <p className="mensaje-error">{error}</p>}
 
-        <button className="button-validacion" onClick={handleResend}>
+        <button className="btn-validacion" onClick={handleResend}>
           Reenviar correo de verificación
         </button>
       </form>
