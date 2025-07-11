@@ -3,7 +3,7 @@ import axios from 'axios'
 import { FaLock} from "react-icons/fa";
 import {Link} from 'react-router-dom'
 import { MdEmail } from "react-icons/md";
-import '../assets/styles/registro.css';
+import '../../assets/styles/registro.css';
 function Login() {
 
   const url = 'http://localhost:3000/api'

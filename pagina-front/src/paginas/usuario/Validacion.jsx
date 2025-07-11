@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../assets/styles/validacion.css';
+import '../../assets/styles/validacion.css';
 
 function Validacion() {
   const [email, setEmail] = useState('');

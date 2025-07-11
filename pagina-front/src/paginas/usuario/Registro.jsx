@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { FaLock, FaUser } from "react-icons/fa";
-import '../assets/styles/registro.css'
+import '../../assets/styles/registro.css';
 import { MdEmail } from "react-icons/md";
 
 function Registro() {
